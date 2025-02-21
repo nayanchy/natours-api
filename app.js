@@ -8,7 +8,9 @@ const app = express();
 /**
  * Middlewares
  */
-app.use(morgan('dev'));
+if (process.env.NODE_ENV !== 'production') {
+  app.use(morgan('dev'));
+}
 app.use(express.json());
 // For static files only
 app.use(express.static(`${__dirname}/public`));

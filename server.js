@@ -1,6 +1,8 @@
+const dotenv = require('dotenv');
+dotenv.config({ path: './config.env' });
+
 const server = require('./app');
 
-console.log(server.get('env'));
-server.listen(8001, () => {
+server.listen(process.env.PORT, () => {
   console.log('listening on http://localhost:8001');
 });

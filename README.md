@@ -298,7 +298,7 @@ Accepted parameter modifiers:
 
 #### Example:
 
-\*/api/v1/tours?price[gt]=500
+_/api/v1/tours?price[gt]=500_
 
 Here _price_ the endpoint will return data only the price less than 500.
 

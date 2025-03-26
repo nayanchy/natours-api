@@ -11,7 +11,7 @@
 
 #### GET ALL TOURS:
 
-- Endpoint: /api/v1/tours
+- Endpoint: `/api/v1/tours`
 - Method: `GET`
 - Authentication:
 - Example:
@@ -250,7 +250,7 @@
 
 #### GET SINGLE TOUR:
 
-- Endpoint: /api/v1/tours/[id]
+- Endpoint: `/api/v1/tours/[id]`
 - Method: `GET`
 - Authentication:
 - Example: /api/v1/tours/67d4116f3f6e286d296d77da
@@ -298,7 +298,7 @@ Accepted parameter modifiers:
 
 ##### Example:
 
-_/api/v1/tours?price[gt]=500_
+`_/api/v1/tours?price[gt]=500_`
 
 Here _price_ the endpoint will return data only the price less than 500.
 

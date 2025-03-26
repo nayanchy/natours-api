@@ -298,7 +298,7 @@ Accepted parameter modifiers:
 
 ##### Example:
 
-`_/api/v1/tours?price[gt]=500_`
+`/api/v1/tours?price[gt]=500`
 
 Here _price_ the endpoint will return data only the price less than 500.
 
@@ -306,5 +306,5 @@ Here _price_ the endpoint will return data only the price less than 500.
 
 You can sort the output by name price or any fields in ascending or descending order.
 
-- For `ASC` order: _api/v1/tours?sort=name_
-- For `DESC` order: _/api/v1/tours?sort=-name_
+- For `ASC` order: `api/v1/tours?sort=name`
+- For `DESC` order: `/api/v1/tours?sort=-name`

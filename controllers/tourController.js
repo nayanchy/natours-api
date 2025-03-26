@@ -14,20 +14,31 @@ exports.getAllTours = async (req, res) => {
   try {
     console.log(req.query);
     // BUILD QUERY
-    //1. Filtering
+
+    //1. Filtering:
     const queryObj = { ...req.query };
     const excludedFields = ['page', 'sort', 'limit', 'fields'];
     excludedFields.forEach((el) => delete queryObj[el]);
 
-    //2. Advanced filtering
+    //2. Advanced filtering:
     let queryStr = JSON.stringify(queryObj);
     queryStr = queryStr.replace(/\b(gte|gt|lte|lt)\b/g, (match) => `$${match}`);
     const filteredQuery = JSON.parse(queryStr);
     let query = Tour.find(filteredQuery);
 
-    // Sorting
+    //3. Sorting:
     if (req.query.sort) {
-      query = query.sort(req.query.sort);
+      const sortBy = req.query.sort.split(',').join(' ');
+      query = query.sort(sortBy);
+    } else {
+      query = query.sort('-createdAt');
+    }
+
+    // 4. Field Limiting:
+
+    if (req.query.fields) {
+      const fields = req.query.fields.split(',').join(' ');
+      query = query.select(fields);
     }
 
     /**
@@ -78,7 +89,17 @@ exports.createNewTour = async (req, res) => {
 
 exports.getSingleTour = async (req, res) => {
   try {
-    const singleTour = await Tour.findById(req.params.id);
+    const queryObj = { ...req.query };
+    const excludedFields = ['fields'];
+    excludedFields.forEach((el) => delete queryObj[el]);
+
+    let query = Tour.findById(req.params.id);
+
+    if (req.query.fields) {
+      const fields = req.query.fields.split(',').join(' ');
+      query = query.select(fields);
+    }
+    const singleTour = await query;
     /**
      * We can also use:
      * const singleTour = await Tour.findOne({ _id: req.params.id });

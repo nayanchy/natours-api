@@ -308,3 +308,23 @@ You can sort the output by name price or any fields in ascending or descending o
 
 - For `ASC` order: `api/v1/tours?sort=name`
 - For `DESC` order: `/api/v1/tours?sort=-name`
+
+Now you can also pass two parameters as query string like this:
+`/api/v1/tours?sort=-price,-ratingsAverage`
+
+Here the API will return sorted data with price and ratingsAverage in `DESC` order. The main sorting parameter is `price` and if the price is same for some tour, then the it will be sorted based on the `ratingsAverage` field in the `DESC` order. You can set it to `ASC` order too. This is based on your requirements.
+
+#### COMBINE SORTING AND FILTERING:
+
+You can combine sorting and filtering as per your requirements.
+
+- Example: `/api/v1/tours?sort=-price,ratingsAverage&duration[gte]=5&price[lte]=500`
+
+#### GET TOUR(S) WITH SELECTED FIELDS:
+
+- You can limit or select the fields you want in the response like this:
+  `/api/v1/tours?fields=name,duration,price,difficulty`
+
+- To get single tour do this:
+  `/api/v1/tours/[id]?fields=name,duration,price,difficulty`
+  _Replace the ID with your tour ID_

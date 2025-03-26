@@ -296,10 +296,15 @@ Accepted parameter modifiers:
 - lt - (Less Then)
 - lte - (Less Then Equal)
 
-#### Example:
+##### Example:
 
 _/api/v1/tours?price[gt]=500_
 
 Here _price_ the endpoint will return data only the price less than 500.
 
 #### GET SINGLE TOUR (SORT):
+
+You can sort the output by name price or any fields in ascending or descending order.
+
+- For `ASC` order: _api/v1/tours?sort=name_
+- For `DESC` order: _/api/v1/tours?sort=-name_

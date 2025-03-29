@@ -325,6 +325,9 @@ You can combine sorting and filtering as per your requirements.
 - You can limit or select the fields you want in the response like this:
   `/api/v1/tours?fields=name,duration,price,difficulty`
 
+- Also if you want all the fields except one or more specified, you can do this:
+  `/api/v1/tours?fields=-name,-duration` (This will return all the fields except the name and duration)
+
 - To get single tour do this:
   `/api/v1/tours/[id]?fields=name,duration,price,difficulty`
-  _Replace the ID with your tour ID_
+  (_Replace the ID with your tour ID_)
